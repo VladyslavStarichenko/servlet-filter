@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping xmlns="http://www.hibernate.org/xsd/hibernate-mapping">
+    <class name="com.alevel.servlet.models.Todo" table="todo">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <property name="name" column="name"/>
+        <property name="category" column="category"/>
+        <many-to-one name="userId" column="useriD"
+                     class="com.alevel.servlet.models.User"
+                     lazy="false"
+        >
+        </many-to-one>
+    </class>
+</hibernate-mapping>
