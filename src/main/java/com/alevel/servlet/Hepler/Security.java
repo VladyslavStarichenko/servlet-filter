@@ -19,10 +19,7 @@ public class Security {
         } catch (NoSuchAlgorithmException e) {
             System.out.println(e.getMessage());
         }
-        return hashed;
+        return null;
     }
 
-    public static void main(String[] args) {
-        Security.hasher("hello world");
-    }
 }
