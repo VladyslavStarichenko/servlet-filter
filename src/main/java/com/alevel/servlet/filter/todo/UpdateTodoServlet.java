@@ -29,9 +29,11 @@ public class UpdateTodoServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {
+
         Todo newTodo = new Todo(request.getParameter("newTodo"), request.getParameter("newCategory"));
         String oldTodoName = (String) request.getSession().getAttribute("todo");
         oldTodo = TodoDao.getTodo(oldTodoName);
+
         todoDao.updateTodo(oldTodo, newTodo);
         request.getSession().removeAttribute("todo");
         response.sendRedirect("/list-todos.do");

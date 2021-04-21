@@ -80,8 +80,32 @@ public class TodoDao {
             e.printStackTrace();
         }
     }
+
+
+    private static List<Todo> getUsersTodos(String userName) {
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+            Query<Todo> query = session.createNativeQuery(" SELECT * FROM  todo t WHERE t.userId IN (SELECT id FROM users u WHERE u.name = ?)", Todo.class);
+            query.setParameter(1, userName);
+            List<Todo> resultList = query.getResultList();
+            session.getTransaction().commit();
+            return resultList;
+        }
+    }
+
+    public static boolean checkTodoForUserExisting(String todoName, String todoCategory, String userName) {
+        List<Todo> todos =  getUsersTodos(userName);
+        for (Todo todo : todos) {
+            if(todo.getName().equals(todoName) && todo.getCategory().equals(todoCategory)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
     public static boolean checkTodoExisting(String todoName, String todoCategory) {
-        List<Todo> todos = getAllTodos();
+        List<Todo> todos =  getAllTodos();
         for (Todo todo : todos) {
             return todo.getName().equals(todoName) && todo.getCategory().equals(todoCategory);
         }

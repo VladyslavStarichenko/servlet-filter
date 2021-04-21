@@ -81,10 +81,6 @@
 	</ul>
 
 	<ul class="nav navbar-nav navbar-right">
-		<li><a href="/login.do" id="second">Login <svg style="margin-bottom: -2px; margin-left:10px" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
-			<path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
-			<path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
-		</svg></a></li>
 		<li style="margin-right: 20px"><a href="/sign-up.do" id="third">Sign Up<svg style="margin-bottom: -2px; margin-left:10px" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-person" viewBox="0 0 16 16">
 			<path d="M12 1a1 1 0 0 1 1 1v10.755S12 11 8 11s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"/>
 			<path d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
@@ -98,19 +94,21 @@
 	<h1 class="text">Log in</h1>
 	<hr>
 	<form action="/login.do" method="post">
-		<p>
-			<font color="red">${errorMessage}</font>
-		</p>
+		<p style="color: lightcoral; text-align: center" >${errorMessage}</p>
 		<fieldset class="fieldset" class="form-group">
-			<label>Name</label> <input name="name" type="text" class="form-control"/> <BR/>
+			<label>Name</label> <input name="name" type="text" class="form-control" value="${name}"/> <BR/>
 		</fieldset>
 
 		<fieldset class="fieldset" class="form-group">
 			<label>Password</label> <input name="password" type="password" class="form-control"/> <BR/>
 		</fieldset>
 		<hr>
-		<input type="submit" value="Login" class="btn btn-info" style="width: 182.4px; margin-top: 5px; margin-left:135px"/>
-
+		<button type="submit" value="Login" class="btn btn-info" style="width: 182.4px; margin-top: 5px; margin-left:135px" >
+			Login<svg style="margin-bottom: -2px; margin-left:10px" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+			<path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
+			<path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+		</svg>
+		</button>
 	</form>
 
 </div>

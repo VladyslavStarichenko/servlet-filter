@@ -1,0 +1,28 @@
+package com.alevel.servlet.Hepler;
+
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+public class Security {
+    public static String hasher(String passwordToHash) {
+
+        String hashed = null;
+        try {
+            MessageDigest md5 = MessageDigest.getInstance("MD5");
+            byte[] passInBytes = md5.digest(passwordToHash.getBytes(StandardCharsets.UTF_8));
+            StringBuilder stringBuilder = new StringBuilder();
+            for (byte b : passInBytes) {
+                hashed = stringBuilder.append(String.format("%02X", b)).toString();
+            }
+            return hashed;
+        } catch (NoSuchAlgorithmException e) {
+            System.out.println(e.getMessage());
+        }
+        return hashed;
+    }
+
+    public static void main(String[] args) {
+        Security.hasher("hello world");
+    }
+}

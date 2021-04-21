@@ -1,5 +1,6 @@
 package com.alevel.servlet.filter.todo;
 
+import com.alevel.servlet.dao.TodoDao;
 import com.alevel.servlet.dao.UserDao;
 import com.alevel.servlet.models.Todo;
 import com.alevel.servlet.models.User;
@@ -27,11 +28,20 @@ public class AddTodoServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+
 		String newTodo = request.getParameter("todo");
 		String category = request.getParameter("category");
 		String username = (String) request.getSession().getAttribute("name");
 		User user = UserDao.getUser(username);
-		todoService.addTodo(new Todo(newTodo, category,user));
-		response.sendRedirect("/list-todos.do");
+		if(!TodoDao.checkTodoForUserExisting(newTodo,category,username)){
+			todoService.addTodo(new Todo(newTodo, category,user));
+			response.sendRedirect("/list-todos.do");
+		}else {
+			request.setAttribute("errorMessage", "This task is already exists");
+			request.getRequestDispatcher("/WEB-INF/views/add-todo.jsp").forward(
+					request, response);
+		}
+
+
 	}
 }

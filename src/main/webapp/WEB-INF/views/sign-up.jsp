@@ -1,3 +1,4 @@
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -89,7 +90,7 @@
     <hr>
 
     <form method="POST" action="/sign-up.do">
-
+        <p style="color: lightcoral; text-align: center">${errorMessage}</p>
         <fieldset class="fieldset" class="form-group">
             <label>Name</label> <input name="name" type="text" class="form-control"/> <BR/>
         </fieldset>
