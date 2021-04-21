@@ -1,9 +1,24 @@
 package com.alevel.servlet.models;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "Todo")
 public class Todo {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+
+	@Column(name = "name", length = 255)
 	private String name;
+
+	@Column(name = "category", length = 255)
 	private String category;
+
+	@ManyToOne
+	@JoinColumn(name="userId")
 	private User userId;
 
 	public Todo(String name, String category, User userId) {

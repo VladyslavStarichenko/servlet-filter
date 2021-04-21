@@ -1,9 +1,20 @@
 package com.alevel.servlet.models;
 
+import javax.persistence.*;
 
+@Entity
+@Table(name = "users")
 public class User {
+
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Integer id;
+
+    @Column(name = "name")
    private String name;
+
+    @Column(name = "password")
    private String password;
 
 
